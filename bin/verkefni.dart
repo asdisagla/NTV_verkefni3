@@ -40,10 +40,20 @@ void searchByName(List<Car> cars, String name) {
 }
 
 
-void searchByModel(List<Car> cars, String model) {
-    print('Searching for cars by model: $model');
+void searchByFuelType(List<Car> cars, String fuelType) {
+    print('Searching for cars by fuel type: $fuelType');
     for (var car in cars) {
-        if (car.model.toLowerCase() == model.toLowerCase()) {
+        if (car.type.fuelType.toLowerCase() == fuelType.toLowerCase()) {
+            print(car);
+        }
+    }
+}
+
+
+void searchByBodyType(List<Car> cars, String bodyType) {
+    print('Searching for cars by body type: $bodyType');
+    for (var car in cars) {
+        if (car.type.bodyType.toLowerCase() == bodyType.toLowerCase()) {
             print(car);
         }
     }
@@ -71,7 +81,8 @@ void main() {
     print('Welcome to the Car Dealership Search System!');
     print('Choose an option to search:');
     print('1. Search by car name');
-    print('2. Search by car model');
+    print('2. Search by car fuel type');
+    print('3. Search by car body type (SUV, Sedan)');
     print('Enter the number of your choice:');
 
     String? choice = stdin.readLineSync();
@@ -85,10 +96,17 @@ void main() {
             }
             break;
         case '2':
-            print('Enter the car model:');
-            String? model = stdin.readLineSync();
-            if (model != null) {
-                searchByModel(cars, model);
+            print('Enter the fuel type (Electric, Diesel):');
+            String? fuelType = stdin.readLineSync();
+            if (fuelType != null) {
+                searchByFuelType(cars, fuelType);
+            }
+            break;
+        case '3':
+            print('Enter the body type (SUV, Sedan):');
+            String? bodyType = stdin.readLineSync();
+            if (bodyType != null) {
+                searchByBodyType(cars, bodyType);
             }
             break;
         default:
